@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Where judgment latency occurs</title>
+  <desc id="desc">A conceptual sequence from decision readiness through waiting for authorized attention to accountable human judgment and a recorded decision. Governed AI support can prepare evidence and options during the waiting interval but does not replace accountable human judgment.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#177d82"/>
+    </marker>
+    <style>
+      .sans { font-family: Inter, Arial, Helvetica, sans-serif; }
+      .serif { font-family: Georgia, 'Times New Roman', serif; }
+      .navy { fill: #10263d; }
+      .muted { fill: #536776; }
+      .teal { fill: #177d82; }
+      .small { font-size: 22px; }
+      .body { font-size: 27px; }
+      .label { font-size: 25px; font-weight: 700; letter-spacing: 1px; }
+      .node { fill: #ffffff; stroke: #cad5db; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="#f7f9f8"/>
+  <rect x="0" y="0" width="1600" height="18" fill="#177d82"/>
+
+  <text x="110" y="108" class="serif navy" font-size="58" font-weight="700">Where judgment latency occurs</text>
+  <text x="110" y="157" class="sans muted body">The construct begins when a decision is ready and ends when the required role or forum attends to it.</text>
+
+  <line x1="270" y1="390" x2="1328" y2="390" stroke="#177d82" stroke-width="5" marker-end="url(#arrow)"/>
+
+  <rect x="100" y="300" rx="10" ry="10" width="335" height="180" class="node"/>
+  <text x="132" y="350" class="sans teal label">1  DECISION READY</text>
+  <text x="132" y="401" class="serif navy" font-size="29" font-weight="700">Evidence assembled</text>
+  <text x="132" y="440" class="sans muted small">A decision now requires</text>
+  <text x="132" y="468" class="sans muted small">authorized judgment.</text>
+
+  <rect x="590" y="270" rx="10" ry="10" width="420" height="240" fill="#e2f0ee" stroke="#177d82" stroke-width="3"/>
+  <text x="625" y="324" class="sans teal label">2  WAIT FOR ATTENTION</text>
+  <text x="625" y="378" class="serif navy" font-size="38" font-weight="700">Judgment latency</text>
+  <text x="625" y="420" class="sans muted small">Elapsed time before the person</text>
+  <text x="625" y="448" class="sans muted small">or forum whose judgment is required</text>
+  <text x="625" y="476" class="sans muted small">attends to the decision.</text>
+
+  <rect x="1165" y="300" rx="10" ry="10" width="335" height="180" class="node"/>
+  <text x="1197" y="350" class="sans teal label">3  JUDGMENT</text>
+  <text x="1197" y="401" class="serif navy" font-size="29" font-weight="700">Human accountable</text>
+  <text x="1197" y="440" class="sans muted small">Decision confirmed, declined,</text>
+  <text x="1197" y="468" class="sans muted small">escalated, and recorded.</text>
+
+  <path d="M660 574 C660 540, 940 540, 940 574" fill="none" stroke="#177d82" stroke-width="3"/>
+  <rect x="420" y="575" rx="12" ry="12" width="760" height="160" fill="#10263d"/>
+  <text x="465" y="625" class="sans" fill="#7ed2ca" font-size="24" font-weight="700" letter-spacing="1px">GOVERNED, ROLE-SPECIFIC AI SUPPORT</text>
+  <text x="465" y="672" class="sans" fill="#ffffff" font-size="23">May prepare cited evidence, options, constraints,</text>
+  <text x="465" y="704" class="sans" fill="#ffffff" font-size="23">and escalation routes.</text>
+  <text x="755" y="704" class="sans" fill="#c8d4dc" font-size="19">Supports the role; does not replace authority.</text>
+
+  <line x1="110" y1="805" x2="1490" y2="805" stroke="#cad5db" stroke-width="2"/>
+  <text x="110" y="846" class="sans muted" font-size="19">Conceptual figure for WT-100-001 v2.0 • Roman Bodnarchuk • WisdomTwin Research • CC BY 4.0 • Not an empirical result</text>
+</svg>

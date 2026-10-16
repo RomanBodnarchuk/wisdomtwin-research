@@ -1,0 +1,30 @@
+{
+  "id": "WT-WP-001",
+  "title": "Sovereign Judgment Twins: A reference architecture for governed enterprise decision support",
+  "version": "1.0",
+  "date": "2026-09-25",
+  "status": "technical whitepaper \u2014 proposed architecture",
+  "peerReviewed": false,
+  "doi": null,
+  "license": "CC-BY-4.0",
+  "canonicalUrl": "https://wisdomtwin-research-library.wisdomtwin-ai.chatgpt.site/papers/sovereign-judgment-twins/",
+  "pdfUrl": "https://wisdomtwin-research-library.wisdomtwin-ai.chatgpt.site/files/WT-WP-001/v1.0/paper.pdf",
+  "pdfSha256": "fbc96b91db882b3c72518c016d28cfabf03501e7d87e5a5a1ca78f0f6cb9ca8b",
+  "author": {
+    "name": "Roman Bodnarchuk",
+    "orcid": "https://orcid.org/0009-0004-3113-2118"
+  },
+  "abstract": "Enterprise AI can retrieve information and execute work without establishing who is authorized to decide, which evidence remains valid, or how an exception should be reviewed. This whitepaper asks what additional architecture is needed to make expert decision context available while preserving organizational control. It defines a Sovereign Judgment Twin as a proposed decision-support system that combines permission-aware evidence retrieval, explicit expert-informed frameworks, enforceable authority boundaries, human disposition, and a versioned decision record. The contribution is an implementation-neutral reference architecture, a minimum decision-record schema, a synthetic risk-exception walkthrough, and a comparative evaluation design. The method is a targeted synthesis of primary technical sources followed by design analysis; it is not a systematic review or an empirical study. The paper treats sovereignty as a set of verifiable controls across processing, access, retention, operations, and exit. It makes no claim that a twin reproduces a person's mind or that agentic systems cannot implement the same controls. The proposed value is conditional: reduce avoidable decision delay while maintaining decision quality and accounting for review, rework, and operating effort. ChatGPT assisted with research, drafting, and document production.",
+  "keywords": [
+    "enterprise AI",
+    "decision support",
+    "AI governance",
+    "institutional memory",
+    "data sovereignty",
+    "agentic workflows",
+    "provenance",
+    "human oversight",
+    "judgment latency"
+  ],
+  "pages": 14
+}

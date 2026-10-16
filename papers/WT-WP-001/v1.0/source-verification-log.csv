@@ -1,0 +1,9 @@
+reference,source,primary_url,scope_and_limit,checked_date
+1,NIST AI RMF 1.0,https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10,Voluntary cross-sector AI risk management context; no conformity claim.,2026-09-24
+2,NIST Generative AI Profile,https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence,Companion risk management profile; does not validate the proposed architecture.,2026-09-24
+3,Anthropic: Building effective agents,https://www.anthropic.com/engineering/building-effective-agents,Conceptual workflow/agent distinction only; tooling has changed since 2024.,2026-09-24
+4,Lewis et al: Retrieval-Augmented Generation,https://arxiv.org/abs/2005.11401,Retrieval with generation; does not establish authorization or enterprise product outcomes.,2026-09-24
+5,NIST SP 800-207,https://csrc.nist.gov/pubs/sp/800/207/final,No implicit trust based solely on network location; architectural context.,2026-09-24
+6,W3C PROV-Overview,https://www.w3.org/TR/prov-overview/,"Provenance concepts; Working Group Note, not an endorsement of WisdomTwin.",2026-09-24
+7,OWASP LLM01:2025,https://genai.owasp.org/llmrisk/llm01-prompt-injection/,Prompt injection risk; retrieval does not fully mitigate it.,2026-09-24
+8,Amershi et al: Guidelines for Human-AI Interaction,https://www.microsoft.com/en-us/research/publication/guidelines-for-human-ai-interaction/,Human interaction design context; no validation of this whitepaper.,2026-09-24
