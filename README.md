@@ -32,3 +32,7 @@ Proposed controls do not establish regulatory compliance; synthetic examples are
 ## Publication operations
 
 Maintain record ID, version, author, license, canonical URL and checksum across mirrors. Search for prior deposits before depositing. Record real repository identifiers and DOI receipts only after successful publication. Do not label these reports peer reviewed.
+
+## Hosted HTML mirror
+
+[Browse the four-report site](https://romanbodnarchuk.github.io/wisdomtwin-research/). Regenerate its pages with `python3 tools/build_site.py`; release PDFs are checked against catalog checksums before rendering.

@@ -1,0 +1,8 @@
+# WisdomTwin Research
+
+Three preprints and one technical whitepaper. Not peer reviewed; no measured product-effectiveness results. Preserve the status, author, version and canonical source when citing.
+
+- [WT-100-001: Judgment Latency in Regulated Enterprises: A Conceptual Framework and Research Agenda for Role-Specific AI Decision Support](https://romanbodnarchuk.github.io/wisdomtwin-research/records/wt-100-001/)
+- [WT-200-001: The WisdomTwin Trust Layer: A Testable Control Specification for Role-Specific AI Decision Support](https://romanbodnarchuk.github.io/wisdomtwin-research/records/wt-200-001/)
+- [WT-300-001: Measuring Judgment Latency and Net Time Recovery: A Staged Pilot Protocol for Role-Specific AI Decision Support](https://romanbodnarchuk.github.io/wisdomtwin-research/records/wt-300-001/)
+- [WT-WP-001: Sovereign Judgment Twins: A reference architecture for governed enterprise decision support](https://romanbodnarchuk.github.io/wisdomtwin-research/records/wt-wp-001/)

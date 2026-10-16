@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+"""Build the static research mirror from catalog.json and unchanged release files."""
+from pathlib import Path
+import json, html, hashlib, sys
+ROOT=Path(__file__).resolve().parents[1]
+C=json.loads((ROOT/"catalog.json").read_text())
+BASE=C["pagesUrl"].rstrip("/")+"/"
+def esc(v): return html.escape(str(v),quote=True)
+CSS="""*{box-sizing:border-box}body{margin:0;background:#f7f7f2;color:#18262d;font:17px/1.65 Georgia,serif}a{color:#155c68}header,main,footer{max-width:1120px;margin:auto;padding:32px}header{border-bottom:1px solid #cbd1cd;font:14px/1.6 system-ui,sans-serif;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}header a{font-weight:650;text-decoration:none}h1,h2,h3{line-height:1.2;letter-spacing:-.025em;font-weight:500}h1{font-size:clamp(35px,5vw,58px);max-width:1000px}h2{font-size:25px}p{max-width:900px}.eyebrow,.meta,.links,footer,dt,dd{font-family:system-ui,sans-serif}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#4f646a}.notice{background:#e8efeb;border-left:3px solid #2b6d68;padding:18px 22px;margin:28px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:32px 0}.card{background:white;border:1px solid #d3d9d5;border-top:3px solid #2b6d68;padding:26px;display:flex;flex-direction:column}.card h2{margin:14px 0}.card .links{margin-top:auto;padding-top:16px}.meta,footer{font-size:14px;color:#4d6068}.links{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}.links a{font-weight:650}dl{display:grid;grid-template-columns:140px 1fr;gap:7px 18px;font-size:14px}dt{color:#4d6068}dd{margin:0;overflow-wrap:anywhere}.hash{overflow-wrap:anywhere;font:12px/1.6 monospace}footer{border-top:1px solid #cbd1cd;margin-top:45px}@media(max-width:700px){header,main,footer{padding:22px}.grid{grid-template-columns:1fr}dl{grid-template-columns:1fr;gap:3px}dd{margin-bottom:10px}}"""
+def shell(title,body,head=""):
+ return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(title)+'</title><meta name="description" content="Open research reports on governed enterprise decision support by Roman Bodnarchuk. Proposed designs and methods; not peer reviewed.">'+head+'<style>'+CSS+'</style></head><body><header><a href="'+BASE+'">WisdomTwin Research</a><nav><a href="'+esc(C["repository"])+'">Source repository</a> · <a href="https://orcid.org/0009-0004-3113-2118">Author ORCID</a></nav></header><main>'+body+'</main><footer>Roman Bodnarchuk · WisdomTwin, Inc. · Original text: CC BY 4.0, subject to third-party rights.<br>Publication mirrors do not represent additional studies or peer review.</footer></body></html>'
+cards=[];urls=[BASE];ids=[]
+for r in C["papers"]:
+ ids.append(r["id"])
+ folder=Path("papers")/r["id"]/("v"+r["version"])
+ pdf=ROOT/folder/"paper.pdf"
+ if hashlib.sha256(pdf.read_bytes()).hexdigest()!=r["pdfSha256"]:raise ValueError("Release checksum mismatch: "+r["id"])
+ route="records/"+r["id"].lower()+"/"
+ record=BASE+route;pdfurl=BASE+folder.as_posix()+"/paper.pdf"
+ abstract=r["abstract"]
+ details='<dl>'+''.join('<dt>'+esc(k)+'</dt><dd>'+esc(v)+'</dd>' for k,v in [("Author",r["author"]["name"]),("Affiliation","WisdomTwin, Inc."),("Record",r["id"]),("Version",r["version"]),("Published",r["date"]),("Status",r["status"]),("Peer review","Not peer reviewed"),("DOI","Not assigned"),("License","CC BY 4.0")])+'</dl>'
+ links='<div class="links">'+''.join('<a href="'+BASE+folder.as_posix()+'/'+file+'">'+label+'</a>' for file,label in [("paper.pdf","Read PDF"),("paper.docx","DOCX"),("paper.md","Markdown"),("citation.bib","BibTeX"),("citation.ris","RIS")])+'</div>'
+ structured={"@context":"https://schema.org","@type":"ScholarlyArticle","name":r["title"],"headline":r["title"],"author":{"@type":"Person","name":r["author"]["name"],"sameAs":r["author"]["orcid"]},"publisher":{"@type":"Organization","name":"WisdomTwin, Inc."},"datePublished":r["date"],"version":r["version"],"abstract":abstract,"license":"https://creativecommons.org/licenses/by/4.0/","url":r["canonicalUrl"],"sameAs":record,"encoding":{"@type":"MediaObject","contentUrl":pdfurl,"encodingFormat":"application/pdf"}}
+ head='<link rel="canonical" href="'+esc(r["canonicalUrl"])+'">'
+ for key,value in [("citation_title",r["title"]),("citation_author",r["author"]["name"]),("citation_publication_date",r["date"].replace("-","/")),("citation_pdf_url",pdfurl),("citation_language","en"),("DC.title",r["title"]),("DC.creator",r["author"]["name"]),("DC.date",r["date"]),("DC.type","Text"),("DC.identifier",r["canonicalUrl"])]:
+  head+='<meta name="'+key+'" content="'+esc(value)+'">'
+ head+='<script type="application/ld+json">'+json.dumps(structured).replace("<","\\u003c")+'</script>'
+ body='<div class="eyebrow">'+esc(r["id"])+' · Version '+esc(r["version"])+'</div><h1>'+esc(r["title"])+'</h1>'+details+'<div class="notice">Proposed architecture or research methods. No validated WisdomTwin enterprise-productivity result is reported. '+('This protocol is not preregistered and reports no study results.' if r["id"]=="WT-300-001" else '')+'</div>'+links+'<h2>Abstract</h2><p>'+esc(abstract)+'</p><h2>Publication record</h2><p>This page distributes the unchanged release. <a href="'+esc(r["canonicalUrl"])+'">View the canonical record</a> for its publication history. The paper contains the author-interest, generative-AI assistance, funding and evidence disclosures.</p><p class="meta">PDF SHA-256</p><p class="hash">'+r["pdfSha256"]+'</p>'
+ out=ROOT/route;out.mkdir(parents=True,exist_ok=True);(out/"index.html").write_text(shell(r["title"],body,head))
+ urls.append(record)
+ cards.append('<article class="card"><div class="eyebrow">'+esc(r["id"])+' · v'+esc(r["version"])+' · '+esc(r["date"])+'</div><h2><a href="'+record+'">'+esc(r["title"])+'</a></h2><p class="meta">'+esc(r["status"])+' · Not peer reviewed</p><div class="links"><a href="'+record+'">Record and abstract</a><a href="'+pdfurl+'">Download PDF</a></div></article>')
+assert len(ids)==len(set(ids))
+body='<div class="eyebrow">Open access · Research reports</div><h1>Governed enterprise decision support.</h1><p>Research by Roman Bodnarchuk, WisdomTwin, Inc., on judgment latency, permission-aware AI, institutional memory and accountable decisions.</p><div class="notice"><strong>Three preprints and one technical whitepaper.</strong> These reports propose designs and evaluation methods. They are not peer reviewed and do not establish measured product effectiveness.</div><div class="grid">'+''.join(cards)+'</div><h2>Traceable, versioned research</h2><p>Each record links to the unchanged PDF, editable source and citation formats. Canonical publication records remain with the original research sites. The author’s commercial interest and AI assistance are disclosed in the papers.</p><div class="links"><a href="'+BASE+'catalog.json">Catalog JSON</a><a href="'+BASE+'SHA256SUMS.txt">File checksums</a><a href="https://wisdomtwin-research-library.wisdomtwin-ai.chatgpt.site/">Research library</a></div>'
+(ROOT/"index.html").write_text(shell("WisdomTwin Research | Roman Bodnarchuk",body))
+(ROOT/".nojekyll").write_text("")
+(ROOT/"robots.txt").write_text("User-agent: *\nAllow: /\nSitemap: "+BASE+"sitemap.xml\n")
+(ROOT/"sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+esc(u)+'</loc></url>' for u in urls)+'</urlset>')
+(ROOT/"llms.txt").write_text("# WisdomTwin Research\n\nThree preprints and one technical whitepaper. Not peer reviewed; no measured product-effectiveness results. Preserve the status, author, version and canonical source when citing.\n\n"+"\n".join("- ["+r["id"]+": "+r["title"]+"]("+BASE+"records/"+r["id"].lower()+"/)" for r in C["papers"])+"\n")
+print("Built "+str(len(ids))+" research record pages and index.")

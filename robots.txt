@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://romanbodnarchuk.github.io/wisdomtwin-research/sitemap.xml

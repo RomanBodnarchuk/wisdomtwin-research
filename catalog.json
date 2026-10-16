@@ -19,7 +19,8 @@
         "name": "Roman Bodnarchuk",
         "orcid": "https://orcid.org/0009-0004-3113-2118"
       },
-      "githubPath": "papers/WT-100-001/v2.0"
+      "githubPath": "papers/WT-100-001/v2.0",
+      "abstract": "Organizations can possess the information required for a decision while still waiting for a particular role to attend to it. This paper defines judgment latency as the elapsed time between decision readiness and attention by the person or forum whose judgment is required. It develops a conceptual framework for studying that interval and proposes the AI Judgment Twin as a role-specific, evidence-grounded decision-support architecture. The proposed system is not a personal replica and does not independently hold organizational authority. It is intended to retrieve authorized precedents, expose the principles, thresholds, exceptions, and escalation patterns reflected in prior decisions, and produce cited recommendations within an explicitly validated boundary. The argument integrates research on work interruption, meeting science, decision rights, organizational memory, digital and human twins, and human reliance on automation. It also specifies a non-overlapping model of potentially recoverable time, distinguishes externally reported estimates from author-derived arithmetic, and states six propositions suitable for empirical testing. For regulated settings, the paper treats provenance, least-privilege access, human confirmation, safe decline, monitoring, and contestability as design requirements rather than demonstrated product capabilities. A staged evaluation design is proposed, beginning in shadow mode and advancing only if decision quality and permission integrity meet pre-specified thresholds. The paper is conceptual and theory-building. WisdomTwin is pre-revenue, has no production users, and has not validated the proposed effects in a live enterprise."
     },
     {
       "id": "WT-200-001",
@@ -38,7 +39,8 @@
         "name": "Roman Bodnarchuk",
         "orcid": "https://orcid.org/0009-0004-3113-2118"
       },
-      "githubPath": "papers/WT-200-001/v1.0"
+      "githubPath": "papers/WT-200-001/v1.0",
+      "abstract": "A role-specific AI assistant creates value only if an authorized recipient can use its evidence without mistaking a generated recommendation for the authority of an officeholder. This paper translates the judgment-latency framework of WT-100-001 into a proposed Trust Layer: a set of enforceable boundaries around data admission, role memory, retrieval, response delivery, and delegated action. The design treats authorization as specific to the requesting person, intended recipient, source, purpose, time, and requested action. It separates historical precedent from current policy and decision authority, requires safe decline when evidence or permissions are uncertain, and specifies an audit record without requiring disclosure of private model reasoning. Voice meetings and multi-party conversations receive explicit audience controls. A traceability matrix connects principal failure modes to testable controls and release evidence. The contribution is a falsifiable specification for future implementation and evaluation. No claim is made that the proposed controls have been implemented, independently validated, or shown to satisfy any particular legal regime."
     },
     {
       "id": "WT-300-001",
@@ -57,7 +59,8 @@
         "name": "Roman Bodnarchuk",
         "orcid": "https://orcid.org/0009-0004-3113-2118"
       },
-      "githubPath": "papers/WT-300-001/v1.0"
+      "githubPath": "papers/WT-300-001/v1.0",
+      "abstract": "Claims that role-specific AI can save hours per day require a design that distinguishes elapsed waiting from human effort, counts review and maintenance burden, and treats decision quality and confidentiality as constraints. This paper proposes a staged evaluation of the AI Judgment Twin concept. Retrospective testing establishes bounded task performance, prospective shadow mode estimates feasibility without affecting decisions, and an authorized controlled pilot compares assisted work with the existing workflow. Decision readiness is defined independently of treatment assignment. The primary outcome is elapsed time to accountable human disposition, supplemented by the narrower judgment-latency interval and net human time per eligible episode. All assigned episodes, including declines and failures, remain in the analysis. The protocol specifies quality review, cluster-aware analysis, missing-data treatment, serious-incident stopping rules, and claim wording tied to observed evidence. It is a research design and does not establish that WisdomTwin reduces time, preserves quality, or is ready for regulated deployment."
     },
     {
       "id": "WT-WP-001",
@@ -92,5 +95,6 @@
     }
   ],
   "distribution_updated": "2026-10-16",
-  "repository": "https://github.com/RomanBodnarchuk/wisdomtwin-research"
+  "repository": "https://github.com/RomanBodnarchuk/wisdomtwin-research",
+  "pagesUrl": "https://romanbodnarchuk.github.io/wisdomtwin-research/"
 }
